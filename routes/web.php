@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ProveedorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +30,6 @@ Auth::routes();
 
 Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('users', App\Http\Controllers\Admin\UserController::class);
+    Route::resource('proveedores', App\Http\Controllers\Admin\ProveedorController::class);
 });
+

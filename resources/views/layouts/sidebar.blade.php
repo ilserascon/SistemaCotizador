@@ -12,6 +12,11 @@
         <li class="{{ request()->is('admin/users*') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('admin.users.index') }}"><i class="fas fa-users"></i> <span>Usuarios</span></a>
         </li>
+        <li class="{{ request()->is('admin/proveedores*') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('admin.proveedores.index') }}">
+            <i class="fas fa-briefcase"></i> <span>Proveedores</span>
+          </a>
+        </li>
       @endif
     </ul>
   </aside>
