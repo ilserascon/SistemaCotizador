@@ -45,30 +45,21 @@
                             <th>Razón Social</th>
                             <th>Teléfono</th>
                             <th>Email</th>
+                            <th>Dirección</th>
                             <th>Código Postal</th>
-                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($clientes->isEmpty())
-                        <tr>
-                            <td colspan="8" class="text-center">No hay clientes registrados.</td>
-                        </tr>
-                    @else
-                        @foreach ($clientes as $cliente)
+                        @forelse ($clientes as $cliente)
                         <tr>
                             <td>{{ $cliente->nombre }}</td>
                             <td>{{ $cliente->rfc }}</td>
                             <td>{{ $cliente->razon_social }}</td>
-                            <td>{{ $cliente->telefono }}</td>
-                            <td>{{ $cliente->email }}</td>
-                            <td>{{ $cliente->codigo_postal }}</td>
-                            <td>
-                                <span class="badge {{ $cliente->borrado == 0 ? 'badge-success' : 'badge-danger' }}">
-                                    {{ $cliente->estado_texto }}
-                                </span>
-                            </td>
+                            <td>{{ $cliente->telefono ?? '-' }}</td>
+                            <td>{{ $cliente->email ?? '-' }}</td>
+                            <td>{{ $cliente->direccion ?? '-' }}</td>
+                            <td>{{ $cliente->codigo_postal ?? '-' }}</td>
                             <td>
                                 <a href="{{ route('admin.clientes.edit', $cliente->id) }}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i>
@@ -76,18 +67,21 @@
                                 <form action="{{ route('admin.clientes.destroy', $cliente->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar cliente?')">
+                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar Cliente?')">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
                             </td>
                         </tr>
-                        @endforeach
-                    @endif
-                    </tbody>
-                </table>
-            </div>
+                    @empty
+                        <tr>
+                            <td colspan="6" class="text-center">No hay clientes registrados.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 </div>
 @endsection

@@ -45,6 +45,12 @@
           </div>
         
           <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="direccion" name="direccion" class="form-control @error('direccion') is-invalid @enderror" value="{{ old('direccion') }}">
+            @error('direccion') <div class="invalid-feedback">{{ $message }}</div> @enderror
+          </div>
+
+          <div class="form-group">
             <label for="codigo_postal">Código Postal</label>
             <input type="codigo_postal" name="codigo_postal" class="form-control @error('codigo_postal') is-invalid @enderror" value="{{ old('codigo_postal') }}">
             @error('codigo_postal') <div class="invalid-feedback">{{ $message }}</div> @enderror

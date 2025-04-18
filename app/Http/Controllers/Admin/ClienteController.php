@@ -15,17 +15,13 @@ class ClienteController extends Controller
         if ($request->has('nombre') && $request->nombre != '') {
             $query->where('nombre', 'LIKE', '%' . $request->nombre . '%');
         }
-    
+
         if ($request->has('rfc') && $request->rfc != '') {
             $query->where('rfc', 'LIKE', '%' . $request->rfc . '%');
         }
-    
-        if ($request->has('estado') && in_array($request->estado, ['0', '1'])) {
-            $query->where('borrado', $request->estado);
-        }
-    
-        $clientes = $query->get();
-    
+
+        $clientes = $query->where('borrado', 0)->get();
+
         return view('admin.clientes.index', compact('clientes'));
     }
 
@@ -69,7 +65,6 @@ class ClienteController extends Controller
             'email' => 'nullable|email|max:255|unique:clientes,email,' . $cliente->id,
             'direccion' => 'nullable|string|max:255',
             'codigo_postal' => 'nullable|string|max:10',
-            'borrado' => 'required|in:0,1',
         ]);
 
         $cliente->update($validated);
