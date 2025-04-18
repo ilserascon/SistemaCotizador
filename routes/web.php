@@ -32,5 +32,7 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(
     Route::resource('users', App\Http\Controllers\Admin\UserController::class);
     Route::resource('proveedores', App\Http\Controllers\Admin\ProveedorController::class);
     Route::resource('clientes', App\Http\Controllers\Admin\ClienteController::class);
+    Route::resource('almacenes', App\Http\Controllers\Admin\AlmacenController::class)
+    ->parameters(['almacenes' => 'almacen']);
 });
 
