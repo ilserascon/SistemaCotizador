@@ -17,6 +17,11 @@
             <i class="fas fa-briefcase"></i> <span>Proveedores</span>
           </a>
         </li>
+        <li class="{{ request()->is('admin/clientes*') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('admin.clientes.index') }}">
+            <i class="fas fa-address-book"></i> <span>Clientes</span>
+          </a>
+        </li>
       @endif
     </ul>
   </aside>
