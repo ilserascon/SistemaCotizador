@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProveedorController;
+use App\Http\Controllers\Admin\TiposInsumosController;
 
 
 /*
@@ -31,5 +32,7 @@ Auth::routes();
 Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('users', App\Http\Controllers\Admin\UserController::class);
     Route::resource('proveedores', App\Http\Controllers\Admin\ProveedorController::class);
+    Route::resource('tipo-insumos', App\Http\Controllers\Admin\TiposInsumosController::class)
+        ->except(['destroy']);
 });
 

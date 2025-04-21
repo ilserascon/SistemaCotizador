@@ -17,6 +17,11 @@
             <i class="fas fa-briefcase"></i> <span>Proveedores</span>
           </a>
         </li>
+        <li class="{{ request()->is('admin/tipo-insumos*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.tipo-insumos.index') }}">
+                <i class="fas fa-cogs"></i> <span>Tipos de Insumo</span>
+            </a>
+        </li>
       @endif
     </ul>
   </aside>
