@@ -12,12 +12,21 @@
         <li class="{{ request()->is('admin/users*') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('admin.users.index') }}"><i class="fas fa-users"></i> <span>Usuarios</span></a>
         </li>
+        <li class="{{ request()->is('admin/clientes*') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('admin.clientes.index') }}">
+            <i class="fas fa-address-book"></i> <span>Clientes</span>
+          </a>
+        </li>
         <li class="{{ request()->is('admin/proveedores*') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('admin.proveedores.index') }}">
             <i class="fas fa-briefcase"></i> <span>Proveedores</span>
           </a>
         </li>
-
+        <li class="{{ request()->is('admin/almacenes*') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('admin.almacenes.index') }}">
+            <i class="fas fa-warehouse"></i> <span>Almacenes</span>
+          </a>
+        </li>
         <li class="{{ request()->is('admin/tipo-insumos*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.tipo-insumos.index') }}">
                 <i class="fas fa-cogs"></i> <span>Tipos de Insumo</span>
@@ -27,16 +36,6 @@
           <a class="nav-link" href="{{ route('admin.insumos.index') }}">
               <i class="fas fa-boxes"></i> <span>Insumos</span>
           </a>    
-        </li>
-        <li class="{{ request()->is('admin/clientes*') ? 'active' : '' }}">
-          <a class="nav-link" href="{{ route('admin.clientes.index') }}">
-            <i class="fas fa-address-book"></i> <span>Clientes</span>
-          </a>
-        </li>
-        <li class="{{ request()->is('admin/almacenes*') ? 'active' : '' }}">
-          <a class="nav-link" href="{{ route('admin.almacenes.index') }}">
-            <i class="fas fa-warehouse"></i> <span>Almacenes</span>
-          </a>
         </li>
       @endif
     </ul>
