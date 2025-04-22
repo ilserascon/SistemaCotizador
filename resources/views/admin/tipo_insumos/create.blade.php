@@ -48,6 +48,7 @@
                 <input type="text" id="campo8" name="campo8" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="{{ route('admin.tipo-insumos.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </div>

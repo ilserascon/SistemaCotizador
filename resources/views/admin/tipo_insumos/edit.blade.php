@@ -49,6 +49,7 @@
                 <input type="text" id="campo8" name="campo8" class="form-control" value="{{ old('campo8', $tipoInsumo->campo8) }}">
             </div>
             <button type="submit" class="btn btn-primary">Actualizar</button>
+            <a href="{{ route('admin.tipo-insumos.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </div>

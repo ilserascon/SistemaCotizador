@@ -46,7 +46,9 @@
                                     <td>{{ $tipoInsumo->campo7 }}</td>
                                     <td>{{ $tipoInsumo->campo8 }}</td>
                                     <td>
-                                        <a href="{{ route('admin.tipo-insumos.edit', $tipoInsumo->id) }}" class="btn btn-warning">Editar</a>
+                                        <a href="{{ route('admin.tipo-insumos.edit', $tipoInsumo->id) }}" class="btn btn-warning btn-sm">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
