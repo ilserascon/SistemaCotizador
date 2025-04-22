@@ -21,6 +21,22 @@ class TipoInsumo extends Model
         'campo8',
     ];
 
+    protected static function booted()
+    {
+        static::updated(function ($tipoInsumo) {
+            $insumos = Insumo::where('id_tipo_insumo', $tipoInsumo->id)->get();
+
+            foreach ($insumos as $insumo) {
+                foreach ($tipoInsumo->getAttributes() as $campo => $valor) {
+                    if (str_starts_with($campo, 'campo')) {
+                        $insumo->$campo = $valor;
+                    }
+                }
+                $insumo->save();
+            }
+        });
+    }
+
     public $timestamps = true;
 
     const CREATED_AT = 'created_at';

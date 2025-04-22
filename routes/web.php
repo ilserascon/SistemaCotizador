@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProveedorController;
 use App\Http\Controllers\Admin\TiposInsumosController;
+use App\Http\Controllers\Admin\InsumoController;
 
 
 /*
@@ -33,6 +34,8 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(
     Route::resource('users', App\Http\Controllers\Admin\UserController::class);
     Route::resource('proveedores', App\Http\Controllers\Admin\ProveedorController::class);
     Route::resource('tipo-insumos', App\Http\Controllers\Admin\TiposInsumosController::class)
+        ->except(['destroy']);
+    Route::resource('insumos', App\Http\Controllers\Admin\InsumoController::class)
         ->except(['destroy']);
 });
 

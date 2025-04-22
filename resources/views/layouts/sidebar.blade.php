@@ -22,6 +22,11 @@
                 <i class="fas fa-cogs"></i> <span>Tipos de Insumo</span>
             </a>
         </li>
+        <li class="{{ Request::is('admin/insumos*') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('admin.insumos.index') }}">
+              <i class="fas fa-boxes"></i> <span>Insumos</span>
+          </a>
+        </li>
       @endif
     </ul>
   </aside>

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre')->nullable();
             $table->foreignId('id_tipo_insumo')->constrained('tipo_insumo');
-            $table->foreignId('id_proveedor')->constrained('proveedor');
+            $table->foreignId('id_proveedor')->constrained('proveedores');
             $table->decimal('costo', 10, 2)->nullable();
             $table->decimal('precio_publico', 10, 2)->nullable();
             $table->decimal('utilidad', 10, 2)->nullable();
