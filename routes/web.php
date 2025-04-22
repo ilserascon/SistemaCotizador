@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProveedorController;
 use App\Http\Controllers\Admin\TiposInsumosController;
 use App\Http\Controllers\Admin\InsumoController;
-
+use App\Http\Controllers\Admin\ClienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +37,8 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(
         ->except(['destroy']);
     Route::resource('insumos', App\Http\Controllers\Admin\InsumoController::class)
         ->except(['destroy']);
+    Route::resource('clientes', App\Http\Controllers\Admin\ClienteController::class);
+    Route::resource('almacenes', App\Http\Controllers\Admin\AlmacenController::class)
+    ->parameters(['almacenes' => 'almacen']);
 });
 
