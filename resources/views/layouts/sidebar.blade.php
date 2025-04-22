@@ -27,6 +27,11 @@
             <i class="fas fa-warehouse"></i> <span>Almacenes</span>
           </a>
         </li>
+        <li class="{{ request()->is('admin/almacenes*') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('admin.productos.index') }}">
+            <i class="fas fa-box"></i> <span>Productos</span>
+          </a>
+        </li>
       @endif
     </ul>
   </aside>
