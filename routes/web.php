@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProveedorController;
+use App\Http\Controllers\Admin\TiposInsumosController;
+use App\Http\Controllers\Admin\InsumoController;
 use App\Http\Controllers\Admin\ClienteController;
 
 /*
@@ -31,6 +33,10 @@ Auth::routes();
 Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('users', App\Http\Controllers\Admin\UserController::class);
     Route::resource('proveedores', App\Http\Controllers\Admin\ProveedorController::class);
+    Route::resource('tipo-insumos', App\Http\Controllers\Admin\TiposInsumosController::class)
+        ->except(['destroy']);
+    Route::resource('insumos', App\Http\Controllers\Admin\InsumoController::class)
+        ->except(['destroy']);
     Route::resource('clientes', App\Http\Controllers\Admin\ClienteController::class);
     Route::resource('almacenes', App\Http\Controllers\Admin\AlmacenController::class)
     ->parameters(['almacenes' => 'almacen']);
