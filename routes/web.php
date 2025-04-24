@@ -33,8 +33,12 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(
     Route::resource('proveedores', App\Http\Controllers\Admin\ProveedorController::class);
     Route::resource('clientes', App\Http\Controllers\Admin\ClienteController::class);
     Route::resource('almacenes', App\Http\Controllers\Admin\AlmacenController::class)
-    ->parameters(['almacenes' => 'almacen']);
+        ->parameters(['almacenes' => 'almacen']);
     Route::resource('productos', App\Http\Controllers\Admin\ProductoController::class)
-    ->parameters(['productos' => 'producto']);
+        ->parameters(['productos' => 'producto']);
+    Route::resource('insumos', App\Http\Controllers\Admin\InsumoController::class)
+        ->except(['destroy']);
+    Route::get('productos/{id}/insumos', [App\Http\Controllers\Admin\ProductoController::class, 'verInsumos'])->name('productos.insumos');
 });
+
 

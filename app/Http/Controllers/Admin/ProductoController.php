@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Insumo;
+use App\Models\ProductoInsumo;
 use Illuminate\Support\Facades\DB;
 
 class ProductoController extends Controller
@@ -34,19 +35,18 @@ class ProductoController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
-            'insumo' => 'sometimes|array',
-            'insumo.*.id' => 'required|exists:insumos,id',
-            'insumo.*.cantidad' => 'required|numeric|min:0',
+            'insumos' => 'sometimes|array',
+            'insumos.*.id' => 'required|exists:insumo,id',
+            'insumos.*.cantidad' => 'required|numeric|min:0',
         ]);
-
+    
         DB::transaction(function () use ($request) {
             $producto = Producto::create($request->only('nombre', 'descripcion'));
-            $this->syncInsumos($producto, $request->insumo);
+            $this->syncInsumos($producto, $request->insumos);
         });
-
+    
         return redirect()->route('admin.productos.index')->with('success', 'Producto creado correctamente.');
     }
-
     public function edit($id)
     {
         $producto = Producto::with('insumos')->findOrFail($id);
@@ -59,29 +59,44 @@ class ProductoController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
-            'insumo' => 'sometimes|array',
-            'insumo.*.id' => 'required|exists:insumos,id',
-            'insumo.*.cantidad' => 'required|numeric|min:0',
+            'insumos' => 'sometimes|array',
+            'insumos.*.id' => 'required|exists:insumo,id',
+            'insumos.*.cantidad' => 'required|numeric|min:0',
         ]);
-
+    
         DB::transaction(function () use ($request, $producto) {
             $producto->update($request->only('nombre', 'descripcion'));
-            $this->syncInsumos($producto, $request->insumo);
+            $this->syncInsumos($producto, $request->insumos);
         });
-
+    
         return redirect()->route('admin.productos.index')->with('success', 'Producto actualizado correctamente.');
     }
-
+    
     private function syncInsumos(Producto $producto, $insumos)
     {
-        ProductoInsumo::where('id_producto', $producto->id)->delete();
+
+        $insumoIds = collect($insumos)->pluck('id')->toArray();
+    
+        ProductoInsumo::where('id_producto', $producto->id)
+            ->whereNotIn('id_insumo', $insumoIds)
+            ->delete();
     
         foreach ($insumos ?? [] as $insumo) {
-            ProductoInsumo::create([
-                'id_producto' => $producto->id,
-                'id_insumo' => $insumo['id'],
-                'cantidad' => $insumo['cantidad'],
-            ]);
+            ProductoInsumo::updateOrCreate(
+                [
+                    'id_producto' => $producto->id,
+                    'id_insumo' => $insumo['id'],
+                ],
+                [
+                    'cantidad' => $insumo['cantidad'],
+                ]
+            );
         }
     }
+    public function verInsumos($id)
+{
+    $producto = Producto::with('insumos')->findOrFail($id);
+    return view('admin.productos.insumos', compact('producto'));
+}
+
 }
