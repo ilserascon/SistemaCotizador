@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Insumo extends Model
 {
-    protected $table = 'insumo'; // nombre exacto de tu tabla
+    use HasFactory;
+    protected $table = 'insumo';
 
     protected $fillable = [
         'nombre',
@@ -34,4 +35,17 @@ class Insumo extends Model
                     ->withTimestamps();
     }
     
+
+    public function tipoInsumo()
+    {
+        return $this->belongsTo(TipoInsumo::class, 'id_tipo_insumo');
+    }
+
+    public function proveedor()
+    {
+        return $this->belongsTo(Proveedor::class, 'id_proveedor');
+    }
+
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = null;
 }
