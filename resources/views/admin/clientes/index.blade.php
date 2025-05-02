@@ -34,7 +34,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h4>Lista de clientes</h4>
+                <h4>Lista de Clientes</h4>
             </div>
             <div class="card-body table-responsive">
                 <table class="table table-striped table-bordered">

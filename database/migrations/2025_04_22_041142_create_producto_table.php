@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->tinyInteger('borrado')->default(0);
+        Schema::create('producto', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->string('descripcion')->nullable();
+            $table->timestamp('created_at')->nullable();
         });
-        
     }
 
     /**
@@ -22,9 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('borrado');
-        });
-        
+        Schema::dropIfExists('producto');
     }
 };

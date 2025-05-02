@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('almacenes', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('ubicacion')->nullable();
+        Schema::table('producto_insumo', function (Blueprint $table) {
             $table->timestamps();
         });
+        
     }
 
     /**
@@ -24,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('almacenes');
+        Schema::table('producto_insumo', function (Blueprint $table) {
+            //
+        });
     }
 };
