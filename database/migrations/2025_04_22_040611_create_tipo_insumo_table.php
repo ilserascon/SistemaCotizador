@@ -24,6 +24,18 @@ return new class extends Migration
             $table->string('campo8')->nullable();
             $table->timestamp('created_at')->nullable();
         });
+        DB::table('tipo_insumo')->insert([
+            'nombre' => 'Telas',
+            'campo1' => 'Diseño',
+            'campo2' => 'Ancho',
+            'campo3' => 'Unidad de Medida',
+            'campo4' => 'Composición',
+            'campo5' => 'Libro',
+            'campo6' => 'Precio CO',
+            'campo7' => 'Precio RO',
+            'campo8' => 'Precio Volumen',
+            'created_at' => now(),
+        ]);
     }
 
     /**
