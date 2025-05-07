@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
 
-     // Crear tabla proveedores
     public function up(): void
     {
         Schema::create('proveedores', function (Blueprint $table) {
@@ -23,8 +19,39 @@ return new class extends Migration
             $table->boolean('borrado')->default(0);
             $table->timestamps();
         });
-    }
 
+        DB::table('proveedores')->insert([
+            [
+                'nombre' => 'VISTATEX LEGLAND',
+                'rfc' => 'TEMP-RFC-001',
+                'razon_social' => 'SIN RAZÓN SOCIAL',
+                'telefono' => '',
+                'email' => null,
+                'borrado' => 0,
+                'created_at' => now(),
+            ],
+            [
+                'nombre' => 'AMERICAN TELAS',
+                'rfc' => 'TEMP-RFC-002',
+                'razon_social' => 'SIN RAZÓN SOCIAL',
+                'telefono' => '',
+                'email' => null,
+                'borrado' => 0,
+                'created_at' => now(),
+            ],
+            [
+                'nombre' => 'DICSA',
+                'rfc' => 'TEMP-RFC-003',
+                'razon_social' => 'SIN RAZÓN SOCIAL',
+                'telefono' => '',
+                'email' => null,
+                'borrado' => 0,
+                'created_at' => now(),
+            ],
+        ]);
+        
+        
+    }
     /**
      * Reverse the migrations.
      */

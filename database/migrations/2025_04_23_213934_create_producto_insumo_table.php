@@ -12,16 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('producto_insumo', function (Blueprint $table) {
-            $table->foreignId('id_producto')->constrained('producto');
-            $table->foreignId('id_insumo')->constrained('insumo');
+            $table->foreignId('id_producto')->constrained('productos')->onDelete('cascade');
+            $table->foreignId('id_insumo')->constrained('insumo')->onDelete('cascade');
+            
+
             $table->decimal('cantidad', 10, 2)->nullable();
+            
+
             $table->primary(['id_producto', 'id_insumo']);
+            
+
+            $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('producto_insumo');

@@ -22,6 +22,11 @@
             <i class="fas fa-briefcase"></i> <span>Proveedores</span>
           </a>
         </li>
+        <li class="{{ request()->is('admin/productos*') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('admin.productos.index') }}">
+            <i class="fas fa-box"></i> <span>Productos</span>
+          </a>
+        </li>
         <li class="{{ request()->is('admin/almacenes*') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('admin.almacenes.index') }}">
             <i class="fas fa-warehouse"></i> <span>Almacenes</span>
