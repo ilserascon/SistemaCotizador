@@ -27,6 +27,14 @@
             <i class="fas fa-warehouse"></i> <span>Almacenes</span>
           </a>
         </li>
+<<<<<<< HEAD
+=======
+        <li class="{{ request()->is('admin/almacenes*') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('admin.productos.index') }}">
+            <i class="fas fa-box"></i> <span>Productos</span>
+          </a>
+
+>>>>>>> origin/Modulo-de-Productos
         <li class="{{ request()->is('admin/tipo-insumos*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.tipo-insumos.index') }}">
                 <i class="fas fa-cogs"></i> <span>Tipos de Insumo</span>
