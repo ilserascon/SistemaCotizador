@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -23,6 +24,36 @@ return new class extends Migration
             $table->boolean('borrado')->default(0);
             $table->timestamps();
         });
+
+        DB::table('proveedores')->insert([
+            [
+                'nombre' => 'VISTATEX LEGLAND',
+                'rfc' => 'TEMP-RFC-001',
+                'razon_social' => 'SIN RAZÓN SOCIAL',
+                'telefono' => null,
+                'email' => null,
+                'borrado' => 0,
+                'created_at' => now(),
+            ],
+            [
+                'nombre' => 'AMERICAN TELAS',
+                'rfc' => 'TEMP-RFC-002',
+                'razon_social' => 'SIN RAZÓN SOCIAL',
+                'telefono' => null,
+                'email' => null,
+                'borrado' => 0,
+                'created_at' => now(),
+            ],
+            [
+                'nombre' => 'DICSA',
+                'rfc' => 'TEMP-RFC-003',
+                'razon_social' => 'SIN RAZÓN SOCIAL',
+                'telefono' => null,
+                'email' => null,
+                'borrado' => 0,
+                'created_at' => now(),
+            ],
+        ]);
     }
 
     /**

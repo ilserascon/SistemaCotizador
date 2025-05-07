@@ -26,6 +26,13 @@ class Insumo extends Model
         'campo6',
         'campo7',
         'campo8',
+        'campo9',
+        'campo10',
+        'campo11',
+        'campo12',
+        'campo13',
+        'campo14',
+        'campo15',
     ];
 
     public function tipoInsumo()
